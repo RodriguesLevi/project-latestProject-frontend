@@ -1,6 +1,6 @@
 // SearchForm.js
 import { useState } from 'react';
-import './SearchForm.css';
+import "../SearchForm/SearchForm.css"; // Ajuste conforme a estrutura do projeto
 
 function SearchForm({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState('');
