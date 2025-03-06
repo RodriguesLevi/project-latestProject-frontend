@@ -52,22 +52,22 @@ function App() {
           onClose={handleCloseAllPopups}
           onSubmit={handleLoginSuccess}
         >
-          <label className="popup__label">Email</label>
+          <label className="popuplabel">Email</label>
           <input 
             type="email" 
-            className="popup__input" 
+            className="popupinput" 
             placeholder="Email" 
             required 
           />
-          <label className="popup__label">Senha</label>
+          <label className="popuplabel">Senha</label>
           <input 
             type="password" 
-            className="popup__input" 
+            className="popupinput" 
             placeholder="Senha" 
             required 
           />
-          <p className="popup__redirect">
-            ou <button type="button" className="popup__redirect-button" onClick={handleRegisterClick}>Inscreva-se</button>
+          <p className="popupredirect">
+            ou <button type="button" className="popupredirect-button" onClick={handleRegisterClick}>Inscreva-se</button>
           </p>
         </PopupWithForm>
 
@@ -79,29 +79,29 @@ function App() {
           onClose={handleCloseAllPopups}
           onSubmit={handleRegisterSuccess}
         >
-          <label className="popup__label">Email</label>
+          <label className="popuplabel">Email</label>
           <input 
             type="email" 
-            className="popup__input" 
+            className="popupinput" 
             placeholder="Email" 
             required 
           />
-          <label className="popup__label">Senha</label>
+          <label className="popuplabel">Senha</label>
           <input 
             type="password" 
-            className="popup__input" 
+            className="popupinput" 
             placeholder="Senha" 
             required 
           />
-          <label className="popup__label">Nome</label>
+          <label className="popuplabel">Nome</label>
           <input 
             type="text" 
-            className="popup__input" 
+            className="popupinput" 
             placeholder="Nome" 
             required 
           />
-          <p className="popup__redirect">
-            ou <button type="button" className="popup__redirect-button" onClick={() => {setIsRegisterOpen(false); setIsLoginOpen(true);}}>Entrar</button>
+          <p className="popupredirect">
+            ou <button type="button" className="popupredirect-button" onClick={() => {setIsRegisterOpen(false); setIsLoginOpen(true);}}>Entrar</button>
           </p>
         </PopupWithForm>
 

@@ -1,12 +1,17 @@
-/* App.css */
 .app {
-    font-family: 'Roboto', Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    max-width: 1440px;
-    min-width: 320px;
-    min-height: 100vh;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-  }
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
