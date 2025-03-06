@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-image: url('../images/main-bg.jpg');
+    background-image: url('../../images/image-main.png');
     background-size: cover;
     background-position: center;
     background-color: #1A1B22;

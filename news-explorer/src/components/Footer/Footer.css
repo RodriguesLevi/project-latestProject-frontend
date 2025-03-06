@@ -62,11 +62,11 @@
   }
   
   .footer__social-icon_github {
-    background-image: url('../images/github-icon.svg');
+    background-image: url('../../images/image-git.png');
   }
   
   .footer__social-icon_facebook {
-    background-image: url('../images/facebook-icon.svg');
+    background-image: url('../../images/fb.png');
   }
   
   @media screen and (max-width: 768px) {

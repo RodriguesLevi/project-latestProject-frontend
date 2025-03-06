@@ -18,7 +18,7 @@
     height: 464px;
     border-radius: 232px;
     background-color: #F5F6F7;
-    background-image: url('../images/author.jpg');
+    background-image: url('../../images/foto-de-perfil.png');
     background-size: cover;
     background-position: center;
     flex-shrink: 0;

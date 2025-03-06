@@ -1,5 +1,4 @@
 import './Footer.css';
-import '../../image/'
 
 function Footer() {
   return (
