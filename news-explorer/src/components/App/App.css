@@ -1,17 +1,27 @@
 .app {
-  min-height: 100vh;
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
-.page {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.main {
+  flex-grow: 1;
+}
+
+.content {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 104px;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .content {
+    padding: 0 16px;
+  }
 }

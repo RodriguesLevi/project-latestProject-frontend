@@ -1,66 +1,51 @@
 .news-card-list {
-  background-color: #F5F6F7;
-  padding: 80px 0;
-}
-
-.news-card-list__container {
-  max-width: 1280px;
+  max-width: 1232px;
   margin: 0 auto;
-  padding: 0 80px;
-  box-sizing: border-box;
+  padding: 0 104px;
 }
 
 .news-card-list__title {
-  font-family: 'Roboto Slab', serif;
-  font-weight: 400;
   font-size: 40px;
   line-height: 46px;
-  color: #1A1B22;
-  margin: 0 0 64px;
+  font-weight: 400;
+  margin-bottom: 64px;
 }
 
-.news-card-list__cards {
+.news-card-list__grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   gap: 16px;
   margin-bottom: 64px;
 }
 
-.news-card-list__button {
+.news-card-list__more-button {
   display: block;
   width: 288px;
   height: 64px;
   margin: 0 auto;
-  background-color: #fff;
   border: 1px solid #1A1B22;
-  border-radius: 100px;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
+  border-radius: 80px;
   font-size: 18px;
   line-height: 24px;
   color: #1A1B22;
-  cursor: pointer;
+  background-color: transparent;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.news-card-list__button:hover {
+.news-card-list__more-button:hover {
   background-color: #1A1B22;
   color: #fff;
 }
 
 @media screen and (max-width: 1024px) {
-  .news-card-list__cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  .news-card-list__container {
-    padding: 0 40px;
+  .news-card-list__grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   }
 }
 
 @media screen and (max-width: 768px) {
   .news-card-list {
-    padding: 40px 0;
+    padding: 0 40px;
   }
   
   .news-card-list__title {
@@ -69,21 +54,22 @@
     margin-bottom: 32px;
   }
   
-  .news-card-list__cards {
+  .news-card-list__grid {
     margin-bottom: 32px;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .news-card-list__cards {
-    grid-template-columns: 1fr;
-  }
-  
-  .news-card-list__container {
+@media screen and (max-width: 480px) {
+  .news-card-list {
     padding: 0 16px;
   }
   
-  .news-card-list__button {
+  .news-card-list__grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .news-card-list__more-button {
     width: 100%;
+    height: 56px;
   }
 }

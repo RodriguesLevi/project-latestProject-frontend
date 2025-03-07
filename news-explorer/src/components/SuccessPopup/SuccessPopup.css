@@ -1,0 +1,11 @@
+.success-popup__message {
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #2F71E5;
+    margin-bottom: 32px;
+  }
+  
+  .success-popup__button {
+    margin-top: 0;
+  }

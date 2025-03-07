@@ -1,96 +1,63 @@
 .footer {
-    background-color: #fff;
-    padding: 32px 0;
-  }
-  
-  .footer__container {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  
-  .footer__copyright {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    line-height: 22px;
-    color: #B6BCBF;
-    margin: 0;
+  background-color: #fff;
+  padding: 32px 104px;
+  margin-top: auto;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1232px;
+  margin: 0 auto;
+}
+
+.footer__copyright {
+  font-size: 16px;
+  line-height: 22px;
+  color: #B6BCBF;
+}
+
+.footer__links {
+  display: flex;
+  gap: 40px;
+}
+
+.footer__link {
+  font-size: 16px;
+  line-height: 22px;
+  color: #1A1B22;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footer__link:hover {
+  opacity: 0.7;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 24px 40px;
   }
   
   .footer__links {
-    display: flex;
-    gap: 40px;
-  }
-  
-  .footer__nav-links {
-    display: flex;
     gap: 24px;
   }
-  
-  .footer__link {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    line-height: 24px;
-    color: #1A1B22;
-    text-decoration: none;
-    transition: opacity 0.3s ease;
+}
+
+@media screen and (max-width: 480px) {
+  .footer {
+    padding: 20px 16px;
   }
   
-  .footer__link:hover {
-    opacity: 0.7;
+  .footer__content {
+    flex-direction: column-reverse;
+    gap: 38px;
+    align-items: flex-start;
   }
   
-  .footer__social-links {
-    display: flex;
-    gap: 24px;
+  .footer__links {
+    width: 100%;
+    justify-content: space-between;
   }
-  
-  .footer__social-icon {
-    width: 24px;
-    height: 24px;
-    background-repeat: no-repeat;
-    background-position: center;
-    transition: opacity 0.3s ease;
-  }
-  
-  .footer__social-icon:hover {
-    opacity: 0.7;
-  }
-  
-  .footer__social-icon_github {
-    background-image: url('../../images/image-git.png');
-  }
-  
-  .footer__social-icon_facebook {
-    background-image: url('../../images/fb.png');
-  }
-  
-  @media screen and (max-width: 768px) {
-    .footer__container {
-      padding: 0 40px;
-    }
-  }
-  
-  @media screen and (max-width: 580px) {
-    .footer__container {
-      flex-direction: column-reverse;
-      align-items: flex-start;
-      gap: 38px;
-      padding: 0 16px;
-    }
-    
-    .footer__links {
-      width: 100%;
-      flex-direction: column;
-      gap: 30px;
-    }
-    
-    .footer__copyright {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
+}

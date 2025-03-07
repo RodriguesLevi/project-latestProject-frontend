@@ -1,13 +1,11 @@
-// Preloader.js
+import React from 'react';
 import './Preloader.css';
 
-function Preloader({ isLoading }) {
+function Preloader() {
   return (
-    <div className={`preloader ${isLoading ? 'preloader_visible' : ''}`}>
-      <div className="preloader__container">
-        <i className="preloader__circle"></i>
-        <p className="preloader__text">Procurando notícias...</p>
-      </div>
+    <div className="preloader">
+      <div className="preloader__circle"></div>
+      <p className="preloader__text">Buscando notícias...</p>
     </div>
   );
 }

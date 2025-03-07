@@ -1,34 +1,32 @@
-// SavedNews.js
-import { useState } from 'react';
-import Header from '../Header/Header';
+import React from 'react';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import NewsCardList from '../NewsCardList/NewsCardList';
-import Footer from '../Footer/Footer';
 import './SavedNews.css';
 
-function SavedNews() {
-  // Dados mock para testar o componente
-  const [savedCards, ] = useState([
-    {
-      title: "Notícia Salva 1",
-      description: "Descrição da notícia salva 1",
-      publishedAt: "2025-03-05T12:00:00Z",
-      source: { name: "News Source" },
-      urlToImage: "https://via.placeholder.com/300",
-      keyword: "Nature"
-    },
-    // Adicione mais para testar
-  ]);
-
+function SavedNews({ articles, onDeleteArticle }) {
   return (
     <>
-      <Header />
-      <SavedNewsHeader savedCards={savedCards} />
-      <NewsCardList 
-        cards={savedCards} 
-        isMainPage={false}
-      />
-      <Footer />
+      <SavedNewsHeader articles={articles} />
+      <div className="saved-news">
+        {articles.length > 0 ? (
+          <NewsCardList 
+            cards={articles.map(article => ({
+              ...article,
+              title: article.title,
+              description: article.text,
+              publishedAt: article.date,
+              urlToImage: article.image,
+              source: { name: article.source },
+              url: article.link,
+              isSaved: true
+            }))}
+            isLoggedIn={true}
+            onDeleteArticle={onDeleteArticle}
+          />
+        ) : (
+          <p className="saved-news__empty">Você ainda não salvou nenhum artigo</p>
+        )}
+      </div>
     </>
   );
 }

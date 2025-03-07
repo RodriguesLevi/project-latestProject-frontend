@@ -1,2 +1,53 @@
-@import url('./vendor/normalize.css');
-@import url('./vendor/fonts.css');
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./vendor/fonts/Inter-Regular.woff2') format('woff2'),
+         url('./vendor/fonts/Inter-Regular.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    src: url('./vendor/fonts/Inter-Medium.woff2') format('woff2'),
+         url('./vendor/fonts/Inter-Medium.woff') format('woff');
+  }
+  
+  @font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('./vendor/fonts/Inter-Bold.woff2') format('woff2'),
+         url('./vendor/fonts/Inter-Bold.woff') format('woff');
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Inter', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #F5F6F7;
+    color: #1A1B22;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  button {
+    padding: 0;
+    border: none;
+    font: inherit;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer;
+  }

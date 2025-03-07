@@ -1,26 +1,33 @@
-// SearchForm.js
-import { useState } from 'react';
-import "../SearchForm/SearchForm.css"; // Ajuste conforme a estrutura do projeto
+import React, { useState } from 'react';
+import './SearchForm.css';
 
-function SearchForm({ onSearch }) {
-  const [searchQuery, setSearchQuery] = useState('');
+function SearchForm({ onSearchSubmit }) {
+  const [keyword, setKeyword] = useState('');
+  const [error, setError] = useState('');
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(searchQuery);
-  }
+    if (!keyword.trim()) {
+      setError('Por favor, insira uma palavra-chave');
+      return;
+    }
+    setError('');
+    onSearchSubmit(keyword);
+  };
 
   return (
     <form className="search-form" onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        className="search-form__input" 
-        placeholder="Procurar notícias"
-        value={searchQuery}
-        onChange={(e) => setSearchQuery(e.target.value)}
-        required
-      />
-      <button type="submit" className="search-form__button">Buscar</button>
+      <div className="search-form__container">
+        <input
+          type="text"
+          className="search-form__input"
+          placeholder="Digite um tema de pesquisa"
+          value={keyword}
+          onChange={(e) => setKeyword(e.target.value)}
+        />
+        <button type="submit" className="search-form__button">Buscar</button>
+      </div>
+      {error && <span className="search-form__error">{error}</span>}
     </form>
   );
 }

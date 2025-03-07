@@ -1,17 +1,7 @@
 import React, { useEffect } from 'react';
-import './PopupWithForm.css';
+import './SuccessPopup.css';
 
-function PopupWithForm({ 
-  title, 
-  name, 
-  buttonText, 
-  isOpen, 
-  onClose, 
-  onSubmit, 
-  children,
-  linkText = '',
-  onLinkClick
-}) {
+function SuccessPopup({ isOpen, onClose, onLoginClick }) {
   // Fecha o modal ao pressionar Esc
   useEffect(() => {
     const handleEscClose = (e) => {
@@ -40,20 +30,14 @@ function PopupWithForm({
     <div className={`popup ${isOpen ? 'popup_opened' : ''}`} onClick={handleOverlayClick}>
       <div className="popup__container">
         <button className="popup__close" type="button" onClick={onClose}></button>
-        <h3 className="popup__title">{title}</h3>
-        <form className="popup__form" name={name} onSubmit={onSubmit} noValidate>
-          {children}
-          <button className="popup__button" type="submit">{buttonText}</button>
-        </form>
-        {linkText && (
-          <div className="popup__link-container">
-            <span className="popup__link-text">ou</span>
-            <button className="popup__link" type="button" onClick={onLinkClick}>{linkText}</button>
-          </div>
-        )}
+        <h3 className="popup__title">Registro bem-sucedido!</h3>
+        <p className="success-popup__message">Sua conta foi criada com sucesso.</p>
+        <button className="popup__button success-popup__button" onClick={onLoginClick}>
+          Entrar
+        </button>
       </div>
     </div>
   );
 }
 
-export default PopupWithForm;
+export default SuccessPopup;

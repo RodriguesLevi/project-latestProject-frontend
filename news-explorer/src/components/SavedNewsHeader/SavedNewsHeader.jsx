@@ -1,34 +1,37 @@
-// SavedNewsHeader.js
+import React from 'react';
 import './SavedNewsHeader.css';
 
-function SavedNewsHeader({ savedCards }) {
-  const keywords = savedCards.map(card => card.keyword);
-  const uniqueKeywords = [...new Set(keywords)];
+function SavedNewsHeader({ articles }) {
+  // Extrair palavras-chave únicas dos artigos
+  const keywords = articles
+    .map(article => article.keyword)
+    .filter((value, index, self) => self.indexOf(value) === index);
   
-  // Obtém os 2 primeiros keywords e conta quantos mais existem
-  const displayKeywords = uniqueKeywords.slice(0, 2);
-  const remainingCount = uniqueKeywords.length - 2;
+  // Formatar a lista de palavras-chave
+  const formatKeywords = () => {
+    if (keywords.length === 0) return '';
+    if (keywords.length === 1) return keywords[0];
+    if (keywords.length === 2) return `${keywords[0]} e ${keywords[1]}`;
+    
+    return `${keywords[0]}, ${keywords[1]} e ${keywords.length - 2} ${keywords.length - 2 === 1 ? 'outro' : 'outros'}`;
+  };
 
   return (
-    <section className="saved-news-header">
+    <div className="saved-news-header">
       <div className="saved-news-header__container">
-        <p className="saved-news-header__label">Artigos salvos</p>
-        <h1 className="saved-news-header__title">
-          {savedCards.length > 0 
-            ? `Você tem ${savedCards.length} artigo${savedCards.length !== 1 ? 's' : ''} salvo${savedCards.length !== 1 ? 's' : ''}`
+        <p className="saved-news-header__title">Artigos salvos</p>
+        <h1 className="saved-news-header__count">
+          {articles.length > 0 
+            ? `Você tem ${articles.length} ${articles.length === 1 ? 'artigo salvo' : 'artigos salvos'}`
             : 'Você não tem artigos salvos'}
         </h1>
-        {savedCards.length > 0 && (
-          <p className="saved-news-header__subtitle">
-            Por palavras-chave: 
-            <span className="saved-news-header__keywords">
-              {displayKeywords.join(', ')}
-              {remainingCount > 0 && ` e ${remainingCount} outr${remainingCount === 1 ? 'a' : 'as'}`}
-            </span>
+        {articles.length > 0 && (
+          <p className="saved-news-header__keywords">
+            Por palavras-chave: <span className="saved-news-header__keywords-list">{formatKeywords()}</span>
           </p>
         )}
       </div>
-    </section>
+    </div>
   );
 }
 
