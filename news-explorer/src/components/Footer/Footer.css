@@ -35,6 +35,27 @@
   opacity: 0.7;
 }
 
+.footer__social {
+  display: flex;
+  gap: 24px;
+}
+
+.footer__social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease;
+}
+
+.footer__social-link:hover {
+  opacity: 0.7;
+}
+
+.footer__social-icon {
+  width: 22px;
+  height: 22px;
+}
+
 @media screen and (max-width: 768px) {
   .footer {
     padding: 24px 40px;
@@ -42,6 +63,10 @@
   
   .footer__links {
     gap: 24px;
+  }
+  
+  .footer__social {
+    gap: 16px;
   }
 }
 
@@ -59,5 +84,10 @@
   .footer__links {
     width: 100%;
     justify-content: space-between;
+  }
+  
+  .footer__social {
+    position: absolute;
+    right: 16px;
   }
 }

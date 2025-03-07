@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Preloader from '../Preloader/Preloader';
-import About from '../About/About';  // Importe o componente About
+import About from '../About/About';
 import './Main.css';
 
 function Main({ 
@@ -67,6 +67,7 @@ function Main({
           ) : null}
         </div>
       )}
+      
       <About />
     </div>
   );

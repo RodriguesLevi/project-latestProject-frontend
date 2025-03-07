@@ -19,20 +19,31 @@ class NewsApi {
       const from = sevenDaysAgo.toISOString().split('T')[0];
       const to = currentDate.toISOString().split('T')[0];
       
-      return fetch(`${this._baseUrl}/everything?q=${keyword}&from=${from}&to=${to}&pageSize=100&apiKey=${this._apiKey}`, {
+      // Adicionando o parâmetro 'language=pt' para obter resultados em português
+      const url = `${this._baseUrl}/everything?q=${encodeURIComponent(keyword)}&from=${from}&to=${to}&language=pt&pageSize=100&apiKey=${this._apiKey}`;
+      
+      return fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
         },
       })
-      .then(this._checkResponse);
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        }
+        return res.text().then(text => {
+          console.error('Detalhes do erro da API:', text);
+          throw new Error(`${res.status}`);
+        });
+      });
     }
   }
   
   // Use o servidor proxy do TripleTen para evitar problemas CORS e restrições da versão gratuita
   const newsApi = new NewsApi({
     baseUrl: 'https://nomoreparties.co/news/v2',
-    apiKey: 'SUA_API_KEY_AQUI', // Substitua pelo seu API key da News API
+    apiKey: '6a3a19fe56824c65bedaf7e1d8997bf4', // Substitua pelo seu API key da News API
   });
   
   export default newsApi;
