@@ -1,3 +1,4 @@
+/* Main.css */
 .main {
   display: flex;
   flex-direction: column;
@@ -37,27 +38,10 @@
   padding: 80px 0;
 }
 
-.main__error {
-  text-align: center;
-  font-size: 18px;
-  line-height: 24px;
-  color: #B6BCBF;
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.main__not-found {
-  text-align: center;
-  font-size: 18px;
-  line-height: 24px;
-  color: #B6BCBF;
-  max-width: 400px;
-  margin: 80px auto;
-}
-
+/* Versão mobile */
 @media screen and (max-width: 768px) {
   .main__search-container {
-    padding: 104px 0;
+    padding: 86px 16px;
   }
   
   .main__title {
@@ -68,24 +52,6 @@
   
   .main__subtitle {
     margin-bottom: 48px;
-  }
-  
-  .main__results {
-    padding: 40px 0;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .main__search-container {
-    padding: 86px 16px;
-  }
-  
-  .main__title {
-    font-size: 36px;
-    line-height: 40px;
-  }
-  
-  .main__results {
-    padding: 24px 0;
+    font-size: 18px;
   }
 }

@@ -32,7 +32,7 @@ function SuccessPopup({ isOpen, onClose, onLoginClick }) {
         <button className="popup__close" type="button" onClick={onClose}></button>
         <h3 className="popup__title">Registro bem-sucedido!</h3>
         <p className="success-popup__message">Sua conta foi criada com sucesso.</p>
-        <button className="popup__button success-popup__button" onClick={onLoginClick}>
+        <button className="success-popup__button" onClick={onLoginClick}>
           Entrar
         </button>
       </div>

@@ -70,6 +70,14 @@
   background-image: url('../../images/card01.png');
 }
 
+.news-card__save-button_trash::before {
+  background-image: url('../../images/lixeira.png');
+}
+
+.news-card__save-button_trash:hover {
+  background-color: rgba(255, 0, 0, 0.1); /* Vermelho claro ao passar o mouse */
+}
+
 .news-card__content {
   display: flex;
   flex-direction: column;

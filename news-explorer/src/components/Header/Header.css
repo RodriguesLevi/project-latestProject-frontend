@@ -1,3 +1,4 @@
+/* Header.css */
 .header {
   position: relative;
   display: flex;
@@ -11,8 +12,13 @@
 }
 
 .header_theme_dark {
-  background-color: #1A1B22;
+  background-color: transparent;
   color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
 }
 
 .header__container {
@@ -37,18 +43,48 @@
   opacity: 0.8;
 }
 
-@media screen and (max-width: 768px) {
-  .header {
-    padding: 30px 40px;
-  }
+.header__mobile {
+  display: none;
 }
 
-@media screen and (max-width: 480px) {
+/* Estilos para dispositivos móveis */
+@media screen and (max-width: 550px) {
   .header {
-    padding: 16px;
+    padding: 16px 16px;
   }
   
-  .header__logo {
-    font-size: 18px;
+  .header__container {
+    position: relative;
+  }
+  
+  .header__logo_desktop {
+    display: none;
+  }
+  
+  .header__mobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .header__logo_mobile {
+    margin: 0 auto;
+  }
+  
+  .header__menu-button {
+    width: 24px;
+    height: 24px;
+    background-image: url('../../images/menu.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 200;
+  }
+  
+  .header__menu-button_close {
+    background-image: url('../../images/close.svg');
   }
 }
