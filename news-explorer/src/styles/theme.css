@@ -1,0 +1,22 @@
+:root {
+    /* Esquema de cores principal - escolha cores únicas */
+    --primary-color: #4a6fa5; /* Azul profundo */
+    --secondary-color: #ff6b6b; /* Vermelho coral */
+    --accent-color: #45b69c; /* Verde-água */
+    --background-color: #f7f7f7;
+    --dark-background: #1e2a3a;
+    --text-color: #2d3748;
+    --light-text: #f8f9fa;
+    
+    /* Espaçamentos */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* Bordas e sombras */
+    --border-radius: 8px;
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --hover-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }

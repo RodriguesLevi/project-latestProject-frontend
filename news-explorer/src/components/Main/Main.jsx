@@ -3,6 +3,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import NewsCardList from '../NewsCardList/NewsCardList';
 import Preloader from '../Preloader/Preloader';
 import About from '../About/About';
+import NewsFilter from '../NewsFilter/NewsFilter';
 import './Main.css';
 
 function Main({ 
@@ -14,6 +15,7 @@ function Main({
   onSaveArticle,
   onDeleteArticle,
   savedArticles
+  
 }) {
   const [searchPerformed, setSearchPerformed] = useState(false);
 
@@ -28,7 +30,10 @@ function Main({
     setSearchPerformed(true);
     onSearchSubmit(keyword);
   };
-
+  const handleFilterChange = (filter) => {
+    console.log("Filtro aplicado:", filter);
+  };
+  
   // Função para verificar se um artigo está salvo
   const isArticleSaved = (article) => {
     return savedArticles.some(savedArticle => 
@@ -47,6 +52,10 @@ function Main({
 
       {searchPerformed && (
         <div className="main__results">
+            {searchPerformed && !isLoading && !searchError && searchResults?.articles?.length > 0 && (
+    <NewsFilter onFilter={handleFilterChange} />
+  )}
+
           {isLoading ? (
             <Preloader />
           ) : searchError ? (
@@ -67,6 +76,7 @@ function Main({
           ) : null}
         </div>
       )}
+      
       
       <About />
     </div>

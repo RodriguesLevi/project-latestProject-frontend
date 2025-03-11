@@ -11,16 +11,16 @@ class MainApi {
     }
   
     // Simulações de métodos de API - serão substituídos por chamadas reais quando seu backend estiver pronto
-    register(email, password, name) {
+    register(_email, _password, name) {
       // Simulação de registro
       return new Promise((resolve) => {
         setTimeout(() => {
-          resolve({ email, name });
+          resolve({ _email, name });
         }, 1000);
       });
     }
   
-    login(email, password) {
+    login(_email, _password) {
       // Simulação de login
       return new Promise((resolve) => {
         setTimeout(() => {
@@ -31,7 +31,7 @@ class MainApi {
       });
     }
   
-    checkToken(token) {
+    checkToken(_token) {
       // Simulação de verificação de token
       return new Promise((resolve) => {
         setTimeout(() => {

@@ -1,4 +1,4 @@
-// Navigation.jsx
+// No arquivo Navigation.jsx
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Navigation.css';
@@ -19,13 +19,24 @@ function Navigation({ onLoginClick, onLogoutClick, isLoggedIn, userName, isMobil
         </NavLink>
         
         {isLoggedIn && (
-          <NavLink 
-            to="/saved-news" 
-            className={({isActive}) => `navigation__link ${isActive ? 'navigation__link_active' : ''}`}
-            onClick={onClose}
-          >
-            Artigos Salvos
-          </NavLink>
+          <>
+            <NavLink 
+              to="/saved-news" 
+              className={({isActive}) => `navigation__link ${isActive ? 'navigation__link_active' : ''}`}
+              onClick={onClose}
+            >
+              Artigos Salvos
+            </NavLink>
+            
+            {/* Nova link para o perfil */}
+            <NavLink 
+              to="/profile" 
+              className={({isActive}) => `navigation__link ${isActive ? 'navigation__link_active' : ''}`}
+              onClick={onClose}
+            >
+              Perfil
+            </NavLink>
+          </>
         )}
         
         {isLoggedIn ? (

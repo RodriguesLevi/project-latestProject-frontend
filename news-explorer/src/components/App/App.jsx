@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -8,56 +8,36 @@ import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import SuccessPopup from '../SuccessPopup/SuccessPopup';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import mainApi from '../../utils/MainApi';
-import newsApi from '../../utils/NewsApi';
+import { useApp } from '../../contexts/AppContext';
+import Profile from '../Profile/Profile';
 import './App.css';
 
 function App() {
+  const { 
+    isLoggedIn, 
+    isLoading: authLoading, 
+    login, 
+    register, 
+    logout,
+    currentUser,
+    loading: articlesLoading,
+    error,
+    articles,
+    savedArticles,
+    searchArticles,
+    saveArticle,
+    deleteArticle
+  } = useApp();
+
   const [isLoginPopupOpen, setIsLoginPopupOpen] = useState(false);
   const [isRegisterPopupOpen, setIsRegisterPopupOpen] = useState(false);
   const [isSuccessPopupOpen, setIsSuccessPopupOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [savedArticles, setSavedArticles] = useState([]);
-  const [searchResults, setSearchResults] = useState(null);
-  const [searchError, setSearchError] = useState(null);
-  const [isCheckingToken, setIsCheckingToken] = useState(true);
 
-  // Verificar token ao carregar
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      setIsCheckingToken(true);
-      mainApi.checkToken(token)
-        .then((userData) => {
-          setCurrentUser(userData);
-          setIsLoggedIn(true);
-          // Buscar artigos salvos
-          return mainApi.getSavedArticles();
-        })
-        .then((articles) => {
-          setSavedArticles(articles);
-        })
-        .catch((err) => {
-          console.error('Erro ao verificar token:', err);
-          localStorage.removeItem('token');
-        })
-        .finally(() => {
-          setIsCheckingToken(false);
-        });
-    } else {
-      setIsCheckingToken(false);
-    }
-  }, []);
-
-  // Carregar resultados salvos da pesquisa do localStorage
-  useEffect(() => {
-    const savedSearch = localStorage.getItem('lastSearch');
-    if (savedSearch) {
-      setSearchResults(JSON.parse(savedSearch));
-    }
-  }, []);
+  const closeAllPopups = () => {
+    setIsLoginPopupOpen(false);
+    setIsRegisterPopupOpen(false);
+    setIsSuccessPopupOpen(false);
+  };
 
   const handleLoginClick = () => {
     setIsRegisterPopupOpen(false);
@@ -70,78 +50,31 @@ function App() {
     setIsRegisterPopupOpen(true);
   };
 
-  const closeAllPopups = () => {
-    setIsLoginPopupOpen(false);
-    setIsRegisterPopupOpen(false);
-    setIsSuccessPopupOpen(false);
+  const handleLogin = async ({ email, password }) => {
+    try {
+      await login(email, password);
+      closeAllPopups();
+    } catch (err) {
+      console.error('Erro ao fazer login:', err);
+    }
   };
 
-  const handleLogin = ({ email, password }) => {
-    setIsLoading(true);
-    mainApi.login(email, password)
-      .then(({ token }) => {
-        localStorage.setItem('token', token);
-        return mainApi.getUserInfo();
-      })
-      .then((userData) => {
-        setCurrentUser(userData);
-        setIsLoggedIn(true);
-        closeAllPopups();
-        // Buscar artigos salvos
-        return mainApi.getSavedArticles();
-      })
-      .then((articles) => {
-        setSavedArticles(articles);
-      })
-      .catch((err) => {
-        console.error('Erro ao fazer login:', err);
-        setSearchError('Credenciais inválidas. Tente novamente.');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  const handleRegister = ({ email, password, name }) => {
-    setIsLoading(true);
-    mainApi.register(email, password, name)
-      .then(() => {
-        setIsRegisterPopupOpen(false);
-        setIsSuccessPopupOpen(true);
-      })
-      .catch((err) => {
-        console.error('Erro ao registrar:', err);
-        setSearchError('Erro ao criar conta. Tente novamente.');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+  const handleRegister = async ({ email, password, name }) => {
+    try {
+      await register(email, password, name);
+      setIsRegisterPopupOpen(false);
+      setIsSuccessPopupOpen(true);
+    } catch (err) {
+      console.error('Erro ao registrar:', err);
+    }
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    setCurrentUser(null);
-    setIsLoggedIn(false);
-    setSavedArticles([]);
+    logout();
   };
 
   const handleSearchSubmit = (keyword) => {
-    setIsLoading(true);
-    setSearchError(null);
-    
-    newsApi.getNews(keyword)
-      .then((data) => {
-        setSearchResults(data);
-        // Salvar resultados no localStorage
-        localStorage.setItem('lastSearch', JSON.stringify(data));
-      })
-      .catch((err) => {
-        console.error('Erro ao buscar notícias:', err);
-        setSearchError('Ocorreu um erro ao buscar notícias. Tente novamente mais tarde.');
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    searchArticles(keyword);
   };
 
   const handleSaveArticle = (article) => {
@@ -149,38 +82,11 @@ function App() {
       handleLoginClick();
       return;
     }
-
-    const articleData = {
-      keyword: article.keyword || 'Sem palavra-chave',
-      title: article.title,
-      text: article.description,
-      date: article.publishedAt,
-      source: article.source.name,
-      link: article.url,
-      image: article.urlToImage
-    };
-
-    mainApi.saveArticle(articleData)
-      .then((savedArticle) => {
-        setSavedArticles([...savedArticles, savedArticle]);
-        
-        // Salvar no localStorage para nossa simulação
-        const currentSaved = JSON.parse(localStorage.getItem('savedArticles') || '[]');
-        localStorage.setItem('savedArticles', JSON.stringify([...currentSaved, savedArticle]));
-      })
-      .catch((err) => {
-        console.error('Erro ao salvar artigo:', err);
-      });
+    saveArticle(article);
   };
 
   const handleDeleteArticle = (articleId) => {
-    mainApi.deleteArticle(articleId)
-      .then(() => {
-        setSavedArticles(savedArticles.filter(article => article._id !== articleId));
-      })
-      .catch((err) => {
-        console.error('Erro ao excluir artigo:', err);
-      });
+    deleteArticle(articleId);
   };
 
   return (
@@ -199,9 +105,9 @@ function App() {
             element={
               <Main 
                 isLoggedIn={isLoggedIn}
-                isLoading={isLoading}
-                searchResults={searchResults}
-                searchError={searchError}
+                isLoading={articlesLoading}
+                searchResults={{ articles }}
+                searchError={error}
                 onSearchSubmit={handleSearchSubmit}
                 onSaveArticle={handleSaveArticle}
                 onDeleteArticle={handleDeleteArticle}
@@ -216,7 +122,7 @@ function App() {
               <ProtectedRoute 
                 element={SavedNews}
                 isLoggedIn={isLoggedIn}
-                isChecking={isCheckingToken}
+                isChecking={authLoading}
                 articles={savedArticles}
                 onDeleteArticle={handleDeleteArticle}
               />
@@ -224,6 +130,21 @@ function App() {
           />
           
           <Route path="*" element={<Navigate to="/" />} />
+
+          <Route 
+    path="/profile" 
+    element={
+      <ProtectedRoute 
+        element={Profile}
+        isLoggedIn={isLoggedIn}
+        isChecking={authLoading}
+      />
+    } 
+  />
+  
+  <Route path="*" element={<Navigate to="/" />} />
+
+
         </Routes>
         
         <Footer />
@@ -233,7 +154,7 @@ function App() {
           onClose={closeAllPopups}
           onRegisterClick={handleRegisterClick}
           onLogin={handleLogin}
-          isLoading={isLoading}
+          isLoading={authLoading}
         />
 
         <RegisterPopup
@@ -241,7 +162,7 @@ function App() {
           onClose={closeAllPopups}
           onLoginClick={handleLoginClick}
           onRegister={handleRegister}
-          isLoading={isLoading}
+          isLoading={authLoading}
         />
 
         <SuccessPopup
