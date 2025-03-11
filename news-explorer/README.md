@@ -1,12 +1,69 @@
-# React + Vite
+# 📰 News Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🚀 Visão Geral
+News Explorer é uma aplicação web inovadora que transforma sua experiência de consumo de notícias. Desenvolvida com React e integrando a News API, a plataforma permite que você descubra, salve e organize artigos de seu interesse em um único lugar.
+Acesse a aplicação →
+Show Image
+## ✨ Características
+### Para usuários
 
-Currently, two official plugins are available:
+🔍 Pesquisa inteligente - Encontre notícias sobre qualquer tema em tempo real
+💾 Salvamento personalizado - Guarde seus artigos favoritos para leitura posterior
+🌓 Modo escuro - Alterne entre temas claro e escuro para uma leitura confortável
+👤 Perfil customizável - Faça upload de foto e personalize seu perfil
+📱 Design responsivo - Experiência otimizada para todos os dispositivos
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Para desenvolvedores
 
-## Expanding the ESLint configuration
+⚛️ React moderno - Construído com Hooks e Context API
+🧩 Arquitetura modular - Componentes reutilizáveis e código organizado
+🔄 Estado centralizado - Gerenciamento de estado eficiente
+🛡️ Autenticação - Sistema completo de registro e login
+🖌️ CSS personalizado - Sem dependências de bibliotecas de UI
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🔄 Fluxo de Trabalho
+Este projeto segue um fluxo de trabalho baseado em GitFlow:
+
+main - Código em produção
+stage-react-api - Implementação do frontend com integração de APIs
+develop - Desenvolvimento contínuo
+
+## 📊 Estatísticas de Leitura
+Visualize seus hábitos de leitura através de estatísticas personalizadas:
+
+Categorias mais lidas
+Tempo médio de leitura
+Tendências de interesse ao longo do tempo
+
+## 🤝 Contribuição
+Contribuições são bem-vindas! Para contribuir:
+
+Faça um fork do projeto
+Crie uma branch para sua feature (git checkout -b feature/AmazingFeature)
+Commit suas mudanças (git commit -m 'Add some AmazingFeature')
+Push para a branch (git push origin feature/AmazingFeature)
+Abra um Pull Request
+
+## 📜 Licença
+Este projeto está licenciado sob a Licença MIT - veja o arquivo LICENSE para detalhes.
+## 👨‍💻 Autor
+Alisson Rodrigues
+
+LinkedIn: https://www.linkedin.com/in/alissonrodrigues-desenvolvedorweb/
+
+GitHub: https://github.com/RodriguesLevi
+
+Email: rodrigues101112@gmail.com
+
+🙏 Agradecimentos
+
+TripleTen pelo programa educacional
+News API pelo acesso à API de notícias
+Todos os revisores e mentores que contribuíram com feedback
+
+
+<p align="center">
+  <img src="../image/Group.png" alt="Logo News Explorer" width="60px" />
+  <br>
+  <i>Desenvolvido com ❤️ e ☕</i>
+</p>
