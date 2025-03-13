@@ -5,7 +5,7 @@ News Explorer é uma aplicação web inovadora que transforma sua experiência d
 Acesse a aplicação →
 Show Image
 ## ✨ Características
-### Para usuários
+### Para usuários 
 
 🔍 Pesquisa inteligente - Encontre notícias sobre qualquer tema em tempo real
 💾 Salvamento personalizado - Guarde seus artigos favoritos para leitura posterior
